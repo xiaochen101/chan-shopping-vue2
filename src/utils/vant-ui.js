@@ -1,0 +1,19 @@
+import Vue from 'vue'
+import { Tabbar, TabbarItem, NavBar, Toast, Search, Swipe, SwipeItem, NoticeBar, Grid, GridItem, Card, Lazyload, Icon, List, Cell, Empty } from 'vant'
+
+Vue.use(NavBar)
+Vue.use(Tabbar)
+Vue.use(TabbarItem)
+Vue.use(Toast)
+Vue.use(Search)
+Vue.use(Swipe)
+Vue.use(SwipeItem)
+Vue.use(NoticeBar)
+Vue.use(Grid)
+Vue.use(GridItem)
+Vue.use(Card)
+Vue.use(Lazyload)
+Vue.use(Icon)
+Vue.use(List)
+Vue.use(Cell)
+Vue.use(Empty)
