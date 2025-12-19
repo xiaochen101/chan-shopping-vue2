@@ -25,6 +25,7 @@ const router = new VueRouter({
     {
       path: '/',
       component: Layout,
+      redirect: '/home',
       children: [
         {
           path: 'home',

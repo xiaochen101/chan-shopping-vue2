@@ -102,7 +102,8 @@ export default {
         sort_type: this.sortType,
         sort_order: this.sortOrder
       })
-      this.GoodsItems = res.data
+      this.GoodsItems = res.data.map((item) => { return item.base })
+      console.log(this.GoodsItems)
     },
     async onLoad () {
       this.currentPage += 1

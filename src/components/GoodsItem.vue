@@ -1,11 +1,12 @@
 <template>
-    <div class="goods-item">
+    <div class="goods-item" >
         <van-card
             :price="GoodsItems.now_price"
             :origin-price="GoodsItems.old_price"
             :desc="sold"
             :title="GoodsItems.name"
             :thumb="GoodsItems.link"
+            @click="$router.push(`/prodetail/${GoodsItems.id}`)"
         >
 
         </van-card>

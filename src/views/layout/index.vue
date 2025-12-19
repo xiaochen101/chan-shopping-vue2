@@ -17,7 +17,21 @@ export default {
   name: 'LayoutIndex',
   data () {
     return {
-      active: 0
+      active: 0,
+      routeTabMap: {
+        '/home': 0,
+        '/category': 1,
+        '/cart': 2,
+        '/user': 3
+      }
+    }
+  },
+  created () {
+    this.active = this.routeTabMap[this.$route.path] || 0
+  },
+  watch: {
+    '$route' (to) {
+      this.active = this.routeTabMap[to.path] || 0
     }
   }
 }

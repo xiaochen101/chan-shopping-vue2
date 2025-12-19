@@ -12,7 +12,7 @@
       <van-notice-bar left-icon="volume-o" :text="context"/>
       <!-- 分类 -->
       <van-grid :column-num="5">
-        <van-grid-item v-for="item in categoryItem" :key="item.id" :icon="item.link" :text="item.text" />
+        <van-grid-item v-for="item in categoryItem" :key="item.id" :icon="item.link" :text="item.text" @click="categoryData(item.text)"/>
       </van-grid>
           <!-- 主会场 -->
       <div class="main">
@@ -57,7 +57,16 @@ export default {
       this.context = item[1].data[0].context
       this.categoryItem = item[2].data.slice(0, 10)
       this.mainvenueImg = item[3].data[0].link
-      this.GoodsItems = item[4].data
+      const goodsItem = item[4].data.filter((item) => { return item.is_goods })
+      this.GoodsItems = goodsItem
+    },
+    categoryData (text) {
+      this.$router.push({
+        path: '/category',
+        query: {
+          cateName: text
+        }
+      })
     }
 
   }
