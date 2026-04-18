@@ -34,15 +34,25 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.van-card__title {
-    font-weight: 700;
-
-}
-.van-card__bottom {
-    text-align: right;
-    line-height: 5.33333vw;
-}
-.van-card__price {
-    color: #ea0707;
-}
+    .van-card {
+      width: 94%;
+      margin: 10px auto;
+      padding: 10px;
+      color: #323233;
+      font-size: 14px;
+      background-color: #fff;
+      .van-card__content {
+        padding: 10px;
+      }
+      .van-card__price {
+        color: #fa2209;
+      }
+      .van-card__thumb {
+        width: 88px;
+        height: 88px;
+      }
+      .van-card__desc {
+        font-size: 12px;
+      }
+    }
 </style>

@@ -1,19 +1,31 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Layout from '@/views/layout'
-import Search from '@/views/search'
-import SearchList from '@/views/search/list'
-import ProDetail from '@/views/prodetail'
-import Login from '@/views/login'
-import Pay from '@/views/pay'
-import MyOrder from '@/views/myorder'
-import NotFind from '@/views/notfound'
 
+import Layout from '@/views/layout'
 import Home from '@/views/layout/home'
 import Category from '@/views/layout/category'
 import Cart from '@/views/layout/cart'
 import User from '@/views/layout/user'
+
 import store from '@/store'
+
+const Search = () => import('@/views/search')
+const SearchList = () => import('@/views/search/list')
+const ProDetail = () => import('@/views/prodetail')
+const Login = () => import('@/views/login')
+const Pay = () => import('@/views/pay')
+const MyOrder = () => import('@/views/my/myorder.vue')
+const NotFind = () => import('@/views/notfound')
+const Address = () => import('@/views/address')
+const AddList = () => import('@/views/address/addList.vue')
+const EditAddress = () => import('@/views/address/editAddress.vue')
+const Wallet = () => import('@/views/my/mywallet.vue')
+const Points = () => import('@/views/my/mypoints.vue')
+const Coupons = () => import('@/views/my/mycoupons.vue')
+const GetCoupons = () => import('@/views/my/mygetcoupons.vue')
+const Exchange = () => import('@/views/my/myexchange.vue')
+const Help = () => import('@/views/my/myhelp.vue')
+const UserInfo = () => import('@/views/my/index.vue')
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -66,22 +78,64 @@ const router = new VueRouter({
       component: MyOrder
     },
     {
+      path: '/address',
+      component: Address
+    },
+    {
+      path: '/addList',
+      component: AddList
+    },
+    {
+      path: '/editAddress',
+      component: EditAddress
+    },
+    {
+      path: '/userinfo',
+      component: UserInfo
+    },
+    {
+      path: '/wallet',
+      component: Wallet
+    },
+    {
+      path: '/points',
+      component: Points
+    },
+    {
+      path: '/coupons',
+      component: Coupons
+    },
+    {
+      path: '/getcoupons',
+      component: GetCoupons
+    },
+    {
+      path: '/exchange',
+      component: Exchange
+    },
+    {
+      path: '/help',
+      component: Help
+    },
+    {
       path: '*',
       component: NotFind
     }
   ]
 })
-const authUrl = ['/pay', '/myorder']
+const authUrlPrefixes = ['/pay', '/myorder']
 router.beforeEach((to, from, next) => {
   // 1. to 往哪里去， 到哪去的路由信息对象
   // 2. from 从哪里来， 从哪来的路由信息对象
   // 3. next() 是否放行
   // 如果next()调用，就是放行
   // next(路径) 拦截到某个路径页面
-  if (!authUrl.includes(to.path)) {
+  const needAuth = authUrlPrefixes.some(prefix => to.path.startsWith(prefix))
+  if (!needAuth) {
     next()
+  } else {
+    const token = store.getters.token
+    token ? next() : next('/login')
   }
-  const token = store.getters.token
-  token ? next() : next('/login')
 })
 export default router

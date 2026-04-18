@@ -96,29 +96,39 @@ export default {
       this.getData()
     },
     async getData () {
-      const res = await getGoodsList({
-        keywords: this.querySearch,
-        page: this.currentPage,
-        sort_type: this.sortType,
-        sort_order: this.sortOrder
-      })
-      this.GoodsItems = res.data.map((item) => { return item.base })
-      console.log(this.GoodsItems)
+      this.loading = true
+      try {
+        const res = await getGoodsList({
+          keywords: this.querySearch,
+          page: this.currentPage,
+          sort_type: this.sortType,
+          sort_order: this.sortOrder
+        })
+        this.GoodsItems = res.data.map(item => item.goods)
+        this.finished = this.currentPage >= res.total_pages
+      } catch (e) {
+        console.error(e)
+      } finally {
+        this.loading = false
+      }
     },
     async onLoad () {
-      this.currentPage += 1
-      const res = await getGoodsList({
-        keywords: this.querySearch,
-        page: this.currentPage,
-        sort_type: this.sortType,
-        sort_order: this.sortOrder
-      })
-      this.GoodsItems = [...this.GoodsItems, ...res.data]
-      // 判断是否加载完所有数据
-      if (this.currentPage >= res.total_pages) {
-        this.finished = true
+      try {
+        const res = await getGoodsList({
+          keywords: this.querySearch,
+          page: this.currentPage + 1, // 先请求下一页，成功后再改页码
+          sort_type: this.sortType,
+          sort_order: this.sortOrder
+        })
+        const newItems = res.data.map(item => item.goods)
+        this.GoodsItems = [...this.GoodsItems, ...newItems]
+        this.currentPage += 1 // 请求成功再更新页码
+        this.finished = this.currentPage >= res.total_pages
+      } catch (e) {
+        console.error(e)
+      } finally {
+        this.loading = false
       }
-      this.loading = false
     }
   }
 }
@@ -127,15 +137,17 @@ export default {
 <style lang="less" scoped>
 .search-list {
   padding-top: 46px;
+  background-color: #f5f5f5;
+  min-height: 667px;
 }
 .sort-btns {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin-top: 14px;
-    margin-bottom: 14px;
+    padding: 14px 0;
     height: 36px;
     line-height: 36px;
+    background-color: #fff;
     .sort-item {
       display: flex;
       text-align: center;

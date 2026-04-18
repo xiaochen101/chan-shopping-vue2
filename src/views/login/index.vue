@@ -96,17 +96,23 @@ export default {
     },
     // 登录
     async login () {
+      if (!this.validFn()) {
+        return
+      }
       try {
-        const { data: { token, uid } } = await Login({
+        const { data: { token } } = await Login({
           phone: this.mobile,
           sms_code: this.SmsCode
         })
 
-        this.$store.commit('user/setUserInfo', {
-          token: token,
-          userId: uid
+        this.$store.commit('user/setUserToken', {
+          token: token
         })
-        this.$router.push('/')
+        const url = this.$route.query.backUrl || '/'
+        setTimeout(() => {
+          this.$router.replace(url)
+        }, 1000)
+
         this.$toast('登录成功')
       } catch (error) {
         this.$toast.fail(

@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import user from '@/store/modules/user'
+import cart from '@/store/modules/cart'
+import address from '@/store/modules/address'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -8,7 +10,10 @@ export default new Vuex.Store({
   },
   getters: {
     token (state) {
-      return state.user.userInfo.token
+      return state.user.userToken.token
+    },
+    cartTotal (state) {
+      return state.cart.cart_total
     }
   },
   mutations: {
@@ -17,6 +22,8 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    user
+    user,
+    cart,
+    address
   }
 })

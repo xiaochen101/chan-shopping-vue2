@@ -1,9 +1,9 @@
 <template>
-    <div class="home">
-      <van-nav-bar class="nav-bar" title="chan商城"  fixed />
+    <div class="home" v-if="images.length">
+      <van-nav-bar class="nav-bar" title="商城"  fixed />
       <van-search  shape="round" background="rgb(254 254 254 / 96%)" placeholder="请输入搜索关键词"  @click="$router.push('/search')"/>
       <!-- 轮播图 -->
-      <van-swipe class="my-swipe" :autoplay="2000" indicator-color="white">
+      <van-swipe  class="my-swipe" :autoplay="2000" indicator-color="white">
         <van-swipe-item v-for="(image, index) in images" :key="index">
           <img v-lazy="image" />
         </van-swipe-item>
@@ -39,7 +39,7 @@ export default {
       images: [], // 轮播图
       context: '', // 通知公告
       categoryItem: [], // 分类
-      mainvenueImg: [], // 主会场
+      mainvenueImg: '', // 主会场
       GoodsItems: [] // 好物推荐
     }
   },
@@ -80,15 +80,9 @@ export default {
   padding-bottom: 50px;
   height: 100%;
   overflow: auto;
+  background-color: #f5f5f5;
 }
-::v-deep .van-nav-bar {
-  z-index: 999 !important;
-  background-color: rgb(17, 175, 223) !important;
-}
-::v-deep .van-nav-bar__title {
-  color: #fff !important;
-  font-weight: 600 !important;
-}
+
 ::v-deep .my-swipe .van-swipe-item {
     color: #fff;
     font-size: 20px;
@@ -108,12 +102,14 @@ export default {
   width: 100%;
   height: 118px;
 }
+
 ::v-deep .goods .goods-title {
 
   font-size: 18px;
   height: 40px;
   line-height: 40px;
   text-align: center;
+  background-color: #fff;
 }
 ::v-deep .van-swipe-item {
   width: 100%;

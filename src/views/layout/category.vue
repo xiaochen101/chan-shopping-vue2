@@ -11,9 +11,9 @@
       />
       <van-tree-select height="525" :items="items" :main-active-index.sync="active"  @click-nav="onload"  >
          <template #content>
-          <van-empty description="暂无商品"  v-if="cateoryChildItem.length === 0"  />
+          <van-empty description="暂无商品"  v-if="categoryChildItem.length === 0"  />
           <van-grid :column-num="3">
-            <van-grid-item  v-for="item in cateoryChildItem" :key="item.id" :icon="item.link" :text="item.text" @click="handelData(item.text)" />
+            <van-grid-item  v-for="item in categoryChildItem" :key="item.id" :icon="item.link" :text="item.text" @click="handelData(item.text)" />
           </van-grid>
 
          </template>
@@ -29,10 +29,10 @@ export default {
   data () {
     return {
       active: 0,
-      items: [{ text: '分组 1' }, { text: '分组 2' }],
+      items: [],
       categoryItem: [],
       category_id: '',
-      cateoryChildItem: []
+      categoryChildItem: []
     }
   },
   async created () {
@@ -41,7 +41,6 @@ export default {
       let index = 0
       for (let i = 0; i < this.items.length; i++) {
         if (this.$route.query.cateName === this.items[i].text) {
-          console.log(i)
           index = i
         }
       }
@@ -62,7 +61,7 @@ export default {
       const res = await getCategoryChild({
         category_id: this.category_id
       })
-      this.cateoryChildItem = res.data
+      this.categoryChildItem = res.data
     },
     handelData (text) {
       this.$router.push(`/searchlist?search=${text}`)
