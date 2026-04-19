@@ -29,6 +29,8 @@ const UserInfo = () => import('@/views/my/index.vue')
 Vue.use(VueRouter)
 
 const router = new VueRouter({
+  mode: 'history',
+  base: './',
   routes: [
     {
       path: '/login',
