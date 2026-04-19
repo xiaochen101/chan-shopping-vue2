@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkchan_shopping"]=self["webpackChunkchan_shopping"]||[]).push([[458],{4458:function(n,t,r){r.r(t),r.d(t,{default:function(){return l}});var e=function(){var n=this,t=n._self._c;return t("div",{staticClass:"coupons"},[t("van-nav-bar",{attrs:{fixed:"",title:"我的优惠券","left-arrow":""},on:{"click-left":function(t){return n.$router.go(-1)}}}),t("van-empty",{attrs:{description:"功能还在开发中，暂无数据"}})],1)},s=[],u={},a=u,c=r(1656),i=(0,c.A)(a,e,s,!1,null,null,null),l=i.exports}}]);
+//# sourceMappingURL=458.d779c48c.js.map

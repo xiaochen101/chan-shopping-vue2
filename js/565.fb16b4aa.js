@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkchan_shopping"]=self["webpackChunkchan_shopping"]||[]).push([[565],{5565:function(n,t,e){e.r(t),e.d(t,{default:function(){return l}});var r=function(){var n=this,t=n._self._c;return t("div",{staticClass:"myexchange"},[t("van-nav-bar",{attrs:{fixed:"",title:"退换/售后","left-arrow":""},on:{"click-left":function(t){return n.$router.go(-1)}}}),t("van-empty",{attrs:{description:"功能还在开发中，暂无数据"}})],1)},a=[],s={},u=s,c=e(1656),i=(0,c.A)(u,r,a,!1,null,null,null),l=i.exports}}]);
+//# sourceMappingURL=565.fb16b4aa.js.map

@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkchan_shopping"]=self["webpackChunkchan_shopping"]||[]).push([[314],{6314:function(n,u,e){e.r(u),e.d(u,{default:function(){return i}});var l=function(){var n=this,u=n._self._c;return u("div",[n._v("404")])},s=[],t={},c=t,r=e(1656),h=(0,r.A)(c,l,s,!1,null,null,null),i=h.exports}}]);
+//# sourceMappingURL=314.92386ad9.js.map

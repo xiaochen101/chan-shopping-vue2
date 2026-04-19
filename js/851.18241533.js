@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkchan_shopping"]=self["webpackChunkchan_shopping"]||[]).push([[851],{6851:function(n,t,r){r.r(t),r.d(t,{default:function(){return c}});var e=function(){var n=this,t=n._self._c;return t("div",{staticClass:"points"},[t("van-nav-bar",{attrs:{fixed:"",title:"我的积分","left-arrow":""},on:{"click-left":function(t){return n.$router.go(-1)}}}),t("van-empty",{attrs:{description:"功能还在开发中，暂无数据"}})],1)},s=[],a={},i=a,u=r(1656),l=(0,u.A)(i,e,s,!1,null,null,null),c=l.exports}}]);
+//# sourceMappingURL=851.18241533.js.map
